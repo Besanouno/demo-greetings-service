@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 public class GreetingsController {
 
     @GetMapping
-    public String greet(@Value ("${greeter: hello}") String greetingForm,
+    public String greet(@Value ("${greeter: hello}") String greeter,
                         @RequestParam(value = "name", defaultValue = "noname") String name)
     {
-        System.out.println(LocalDateTime.now() + " Greetings for " + name);
-        return greetingForm + " " + name;
+        System.out.println(String.format("[%s] %s %s", LocalDateTime.now(), greeter, name));
+        return greeter + " " + name;
     }
 }
